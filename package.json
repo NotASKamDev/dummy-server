@@ -5,13 +5,13 @@
     "main": "dist/index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js --format=esm",
+        "build": "node esbuild.prod.config.js",
         "dev:nodemon": "nodemon -e ts --watch src --exec \"pnpm run dev:tsc && pnpm run dev:esbuild && pnpm run dev:node\"",
         "dev": "tsc-watch --onSuccess \"pnpm run dev:success\"",
         "dev:success": "tsx ./src/index.ts",
         "dev:success:esbuild": "pnpm dev:esbuild && pnpm dev:node",
         "dev:tsc": "tsc",
-        "dev:esbuild": "pnpm run build",
+        "dev:esbuild": "node esbuild.dev.config.js",
         "dev:node": "node dist/index.js"
     },
     "keywords": [],
